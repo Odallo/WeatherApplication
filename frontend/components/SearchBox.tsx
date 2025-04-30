@@ -1,6 +1,6 @@
 'use client'
 
-// import Input from rippleui is removed as it does not exist
+
 import { useState } from 'react'
 
 type Props = {

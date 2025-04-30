@@ -1,4 +1,3 @@
-// src/components/WeatherIcon.tsx
 
 import React from 'react';
 import Image from 'next/image'; // Use Next.js Image for optimization

@@ -1,11 +1,11 @@
-// src/components/WeatherStats.tsx
+
 
 import React from 'react';
 
 // Define the types for the props this component expects
 type Props = {
-  windSpeed: number;          // Raw speed from API (m/s or mph)
-  windDirection: number;      // Raw direction from API (degrees)
+  windSpeed: number;          // Raw speed 
+  windDirection: number;      // Raw direction 
   humidity: number;           // Percentage
   unit: 'metric' | 'imperial'; // To determine display units
 };
@@ -16,7 +16,7 @@ function degreesToCardinal(deg: number): string {
     const normalizedDeg = ((deg % 360) + 360) % 360;
     const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
     // Each direction covers 22.5 degrees (360 / 16)
-    // Find the closest direction index
+    // Closest direction index
     const index = Math.round(normalizedDeg / 22.5) % 16;
     return directions[index];
 }

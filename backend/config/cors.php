@@ -19,8 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000'], // Replace '*' with your frontend URL if needed, e.g., 'http://localhost:3000'
-
+    'allowed_origins' => ['http://localhost:3000'], 
     'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
