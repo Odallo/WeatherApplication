@@ -1,10 +1,10 @@
-const WeatherIcon = ({ icon }: { icon: string }) => {
+type Props = {
+  iconUrl: string
+  alt?: string
+}
+
+export default function WeatherIcon({ iconUrl, alt }: Props) {
   return (
-    <img
-      src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-      alt="weather icon"
-      className="w-20 h-20"
-    />
+    <img src={iconUrl} alt={alt || 'weather icon'} className="w-20 h-20" />
   )
 }
-export default WeatherIcon

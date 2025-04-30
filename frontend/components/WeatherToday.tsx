@@ -1,16 +1,18 @@
-const WeatherToday = () => {
+type Props = {
+  temperature: number
+  description: string
+  date: string
+  location: string
+  unit: 'metric' | 'imperial'
+}
+
+export default function WeatherToday({ temperature, description, date, location, unit }: Props) {
   return (
-    <div className="card p-4 bg-base-100 shadow-md">
-      <h2 className="text-xl font-bold">Nairobi, KE</h2>
-      <p className="text-sm text-gray-500">Wed, April 30</p>
-      <div className="flex items-center gap-4 mt-2">
-        <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="icon" />
-        <div>
-          <h3 className="text-4xl font-bold">26°C</h3>
-          <p className="text-gray-600">Sunny</p>
-        </div>
-      </div>
+    <div className="card p-4 bg-base-200 shadow-md">
+      <h2 className="text-xl font-semibold">{location}</h2>
+      <p className="text-sm text-gray-400">{date}</p>
+      <div className="mt-2 text-4xl font-bold">{temperature}°{unit === 'metric' ? 'C' : 'F'}</div>
+      <p className="capitalize">{description}</p>
     </div>
   )
 }
-export default WeatherToday

@@ -1,30 +1,33 @@
 'use client'
+
+// import Input from rippleui is removed as it does not exist
 import { useState } from 'react'
-import { fetchCityCoordinates } from '@/lib/geocode'
 
-export default function SearchBox() {
+type Props = {
+  onSearch: (city: string) => void
+}
+
+export default function SearchBox({ onSearch }: Props) {
   const [city, setCity] = useState('')
-  const [loading, setLoading] = useState(false)
 
-  const handleSearch = async () => {
-    setLoading(true)
-    const result = await fetchCityCoordinates(city)
-    console.log('📍 Location result:', result)
-    setLoading(false)
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (city.trim()) {
+      onSearch(city.trim())
+      setCity('')
+    }
   }
 
   return (
-    <div className="flex gap-2">
+    <form onSubmit={handleSubmit} className="flex gap-2">
       <input
         type="text"
-        className="input input-bordered w-full"
-        placeholder="Enter city name"
+        placeholder="Enter city name..."
         value={city}
         onChange={(e) => setCity(e.target.value)}
+        className="w-full input"
       />
-      <button className="btn btn-primary" onClick={handleSearch} disabled={loading}>
-        {loading ? 'Searching...' : 'Search'}
-      </button>
-    </div>
+      <button className="btn btn-primary" type="submit">Search</button>
+    </form>
   )
 }

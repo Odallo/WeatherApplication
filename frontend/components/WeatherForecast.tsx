@@ -1,20 +1,25 @@
-const WeatherForecast = () => {
-  const forecast = [
-    { day: "Thu", temp: "28°C", icon: "02d" },
-    { day: "Fri", temp: "27°C", icon: "03d" },
-    { day: "Sat", temp: "25°C", icon: "04d" },
-  ]
+type Forecast = {
+  date: string
+  icon: string
+  min: number
+  max: number
+}
 
+type Props = {
+  forecasts: Forecast[]
+  unit: 'metric' | 'imperial'
+}
+
+export default function WeatherForecast({ forecasts, unit }: Props) {
   return (
-    <div className="grid grid-cols-3 gap-2 mt-4">
-      {forecast.map(({ day, temp, icon }) => (
-        <div key={day} className="card bg-base-100 p-2 text-center shadow">
-          <p>{day}</p>
-          <img src={`https://openweathermap.org/img/wn/${icon}.png`} alt={day} className="mx-auto" />
-          <p>{temp}</p>
+    <div className="grid grid-cols-3 gap-4 mt-4">
+      {forecasts.map((f, idx) => (
+        <div key={idx} className="card p-4 bg-base-100 shadow-sm text-center">
+          <p className="text-sm text-gray-500">{f.date}</p>
+          <img src={f.icon} alt="forecast icon" className="h-12 w-12 mx-auto" />
+          <p>{f.min}° / {f.max}°{unit === 'metric' ? 'C' : 'F'}</p>
         </div>
       ))}
     </div>
   )
 }
-export default WeatherForecast

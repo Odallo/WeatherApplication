@@ -1,24 +1,23 @@
-"use client"
-import { useState } from 'react'
+type Props = {
+  unit: 'metric' | 'imperial'
+  setUnit: React.Dispatch<React.SetStateAction<'metric' | 'imperial'>>
+}
 
-const TemperatureToggle = () => {
-  const [unit, setUnit] = useState<'C' | 'F'>('C')
-
+export default function TemperatureToggle({ unit, setUnit }: Props) {
   return (
-    <div className="flex gap-2 mb-4">
+    <div className="flex space-x-2">
       <button
-        className={`btn ${unit === 'C' ? 'btn-primary' : ''}`}
-        onClick={() => setUnit('C')}
+        onClick={() => setUnit('metric')}
+        className={`btn ${unit === 'metric' ? 'btn-primary' : 'btn-ghost'}`}
       >
         °C
       </button>
       <button
-        className={`btn ${unit === 'F' ? 'btn-primary' : ''}`}
-        onClick={() => setUnit('F')}
+        onClick={() => setUnit('imperial')}
+        className={`btn ${unit === 'imperial' ? 'btn-primary' : 'btn-ghost'}`}
       >
         °F
       </button>
     </div>
   )
 }
-export default TemperatureToggle
